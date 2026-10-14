@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biswajeet Kumar Parida | Pixel Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fbf0cb;
+            --grid-color: rgba(0, 0, 0, 0.05);
+            --text-main: #1a1a1a;
+            --primary-purple: #432c7a;
+            --accent-pink: #ff5757;
+            --accent-yellow: #ffd13b;
+            --retro-green: #10b981;
+            --border-dark: #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: 24px 24px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+            background-size: 100% 4px;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 3px solid var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--border-dark);
+            color: var(--accent-yellow);
+            padding: 8px 12px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            border: 2px solid var(--border-dark);
+            box-shadow: 3px 3px 0px var(--accent-pink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            padding: 4px 8px;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            border: 2px solid var(--border-dark);
+            background: var(--accent-yellow);
+            box-shadow: 2px 2px 0px var(--border-dark);
+        }
+
+        .arcade-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .arcade-btn-tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding: 6px 10px;
+            border: 2px solid var(--border-dark);
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--border-dark);
+            transition: transform 0.1s;
+        }
+
+        .arcade-btn-tag:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            padding: 60px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 42px;
+            line-height: 1.3;
+            color: var(--primary-purple);
+            text-shadow: 3px 3px 0px var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .role-tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn-pixel {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            padding: 14px 20px;
+            border: 3px solid var(--border-dark);
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--border-dark);
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.1s;
+            font-weight: bold;
+        }
+
+        .btn-pixel.primary {
+            background: var(--accent-pink);
+            color: white;
+        }
+
+        .btn-pixel.secondary {
+            background: #fff;
+            color: var(--text-main);
+        }
+
+        .btn-pixel:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px var(--border-dark);
+        }
+
+        /* Metric Cards Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: #fff;
+            border: 3px solid var(--border-dark);
+            padding: 15px;
+            box-shadow: 4px 4px 0px var(--border-dark);
+        }
+
+        .metric-card h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 18px;
+            color: var(--primary-purple);
+            margin-bottom: 5px;
+        }
+
+        .metric-card p {
+            font-size: 13px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Retro Monitor Box */
+        .monitor-box {
+            background: var(--primary-purple);
+            border: 4px solid var(--border-dark);
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 8px 8px 0px var(--accent-pink);
+            position: relative;
+        }
+
+        .monitor-screen {
+            background: #112211;
+            border: 3px solid #22c55e;
+            padding: 20px;
+            min-height: 320px;
+            color: #22c55e;
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .monitor-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            border-bottom: 2px dashed #22c55e;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Sections Container */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 24px;
+            color: var(--primary-purple);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 3px;
+            background: var(--border-dark);
+        }
+
+        /* Experience & Projects Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .arcade-card {
+            background: #fff;
+            border: 3px solid var(--border-dark);
+            padding: 25px;
+            box-shadow: 6px 6px 0px var(--border-dark);
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .arcade-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .arcade-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-purple);
+            margin-bottom: 8px;
+        }
+
+        .arcade-card .subtitle {
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .pixel-badge {
+            background: var(--bg-color);
+            border: 2px solid var(--border-dark);
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Mini-Game Section */
+        .game-arena {
+            background: #fff;
+            border: 4px solid var(--border-dark);
+            padding: 30px;
+            box-shadow: 8px 8px 0px var(--primary-purple);
+            text-align: center;
+        }
+
+        #gameCanvas {
+            background: #1a1a1a;
+            border: 3px solid var(--border-dark);
+            max-width: 100%;
+            cursor: crosshair;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--border-dark);
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo-box">
+            <span>[BP] PIXEL_FOLIO</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
+            <li><a href="#projects">QUESTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="arcade-btns">
+            <button class="arcade-btn-tag" onclick="alert('INSERT COIN TO HIRE!')">COIN: 01</button>
+            <button class="arcade-btn-tag" style="background: var(--accent-yellow);" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">HIRE ME</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="role-tag">PLAYER ONE / GROWTH & AUTOMATION EXPERT</span>
+            <h1>BISWAJEET KUMAR PARIDA</h1>
+            <p>I design automated marketing workflows, execute precision SEO strategies, and scale lead velocity where engineering meets high-impact business growth.</p>
+            
+            <div class="cta-group">
+                <a href="#projects" class="btn-pixel primary">PLAY MY WORK</a>
+                <a href="http://www.linkedin.com/in/biswajeet-marketing" target="_blank" class="btn-pixel secondary">LINKEDIN</a>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>20+</h3>
+                    <p>Automated Workflows Built</p>
+                </div>
+                <div class="metric-card">
+                    <h3>80%</h3>
+                    <p>Deployment Rate[cite: 1]</p>
+                </div>
+                <div class="metric-card">
+                    <h3>8.99</h3>
+                    <p>University CGPA[cite: 2]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="monitor-box">
+            <div class="monitor-screen">
+                <div class="monitor-header">
+                    <span>PORTFOLIO.EXE</span>
+                    <span class="blink">● ONLINE[cite: 3]</span>
+                </div>
+                <p>> Loading candidate profile...</p>
+                <p>> MBA Student @ LPU (International Business)[cite: 1, 2]</p>
+                <p>> Ex-Educational Marketing Specialist @ OmSpace[cite: 1]</p>
+                <p>> Tech Stack: n8n, Pabbly, Zoho CRM, Power BI, GA4, SQL, Figma[cite: 1]</p>
+                <p>> Status: Ready for Enterprise Impact (Deloitte, EY, Accenture, Google)[cite: 1, 2]</p>
+                <p class="blink">> PRESS START TO EXPLORE_</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px; color: white; font-family: 'Press Start 2P'; font-size: 10px;">
+                <span>SELECT</span>
+                <span>START</span>
+                <span style="color: var(--accent-pink);">● A</span>
+                <span style="color: var(--accent-yellow);">● B</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <div class="container" id="experience">
+        <div class="section-title">WORK EXPERIENCE</div>
+        <div class="grid-2">
+            
+            <div class="arcade-card">
+                <h3>Educational Marketing Specialist</h3>
+                <div class="subtitle">OmSpace Rocket & Exploration | Ahmedabad[cite: 1]</div>
+                <p>• Designed & deployed <strong>20+ automated workflows</strong> using Pabbly and AiSensy achieving an <strong>80% deployment rate</strong>[cite: 1].</p>
+                <p>• Built real-time Razorpay Webhook Zoho CRM integration reducing sales follow-up time[cite: 1].</p>
+                <p>• Developed Power BI dashboards & segmented lead reports to optimize ad agency data quality[cite: 1].</p>
+                <div class="badge-list">
+                    <span class="pixel-badge">n8n & Pabbly</span>
+                    <span class="pixel-badge">Zoho CRM</span>
+                    <span class="pixel-badge">Power BI</span>
+                </div>
+            </div>
+
+            <div class="arcade-card">
+                <h3>Digital Marketing Intern</h3>
+                <div class="subtitle">SOLVATIVE, Zeepty & Stellar8Labs[cite: 1]</div>
+                <p>• Increased social media interactions by <strong>30%</strong> and generated 15+ qualified leads in 1 month[cite: 1].</p>
+                <p>• Improved SEO scores from 66 to 72, boosting organic traffic by <strong>12%</strong>[cite: 1].</p>
+                <p>• Executed healthcare event campaigns driving <strong>120+ registrations</strong> through targeted outreach[cite: 1].</p>
+                <div class="badge-list">
+                    <span class="pixel-badge">SEO Audits</span>
+                    <span class="pixel-badge">Content Strategy</span>
+                    <span class="pixel-badge">Lead Gen</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Interactive Game Section -->
+    <div class="container" id="projects">
+        <div class="section-title">ARCADE QUEST: SEO BUG HUNTER</div>
+        <div class="game-arena">
+            <p style="font-family: 'VT323'; font-size: 24px; margin-bottom: 15px;">Click the falling technical SEO errors and broken links to boost the site SEO Score to 100%!</p>
+            <canvas id="gameCanvas" width="700" height="350"></canvas>
+            <div id="gameScore" style="font-family: 'Press Start 2P'; font-size: 14px; margin-top: 15px; color: var(--primary-purple);">
+                SEO SCORE: <span id="scoreVal">0</span> / 10
+            </div>
+        </div>
+    </div>
+
+    <!-- Education & Certifications -->
+    <div class="container">
+        <div class="section-title">EDUCATION & CREDENTIALS</div>
+        <div class="grid-2">
+            <div class="arcade-card">
+                <h3>Master of Business Administration</h3>
+                <div class="subtitle">Lovely Professional University (International Business)[cite: 1, 2]</div>
+                <p><strong>B.Sc. Zoology Honors</strong> | CGPA: 8.99 (Jupiter Degree College)[cite: 2]</p>
+                <p>CBSE National Cluster Archery Player & Quiz Runner-Up[cite: 2]</p>
+            </div>
+            <div class="arcade-card">
+                <h3>Key Certifications</h3>
+                <p>• Google AI Essentials & Google Data Analytics[cite: 2]</p>
+                <p>• Google Digital Marketing & E-Commerce Specialization[cite: 2]</p>
+                <p>• Keyword Research Essentials with Semrush & International SEO[cite: 2]</p>
+                <div class="badge-list">
+                    <span class="pixel-badge">Semrush Certified</span>
+                    <span class="pixel-badge">Google Analytics</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <footer id="contact">
+        <p>READY TO SCALE YOUR TEAM? LET'S CONNECT!</p>
+        <p style="margin-top: 10px; font-size: 18px; color: var(--accent-yellow);">
+            Email: Biswajeetkumarp@gmail.com | Phone: +91 9294778808[cite: 1]
+        </p>
+    </footer>
+
+    <!-- Mini-Game JavaScript -->
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let score = 0;
+        let bugs = [];
+
+        class Bug {
+            constructor() {
+                this.x = Math.random() * (canvas.width - 40);
+                this.y = -30;
+                this.speed = 1.5 + Math.random() * 2;
+                this.size = 24;
+            }
+            update() {
+                this.y += this.speed;
+            }
+            draw() {
+                ctx.fillStyle = '#ff5757';
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.fillStyle = '#fff';
+                ctx.font = '12px monospace';
+                ctx.fillText('BUG', this.x + 2, this.y + 16);
+            }
+        }
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            bugs.forEach((bug, index) => {
+                if (mouseX >= bug.x && mouseX <= bug.x + bug.size &&
+                    mouseY >= bug.y && mouseY <= bug.y + bug.size) {
+                    bugs.splice(index, 1);
+                    score++;
+                    document.getElementById('scoreVal').innerText = score;
+                    if(score >= 10) {
+                        alert('🎉 SEO OPTIMIZATION COMPLETE! HR UNLOCKED BADGE: TOP TIER CANDIDATE!');
+                        score = 0;
+                    }
+                }
+            });
+        });
+
+        function animateGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (Math.random() < 0.03 && bugs.length < 5) {
+                bugs.push(new Bug());
+            }
+
+            bugs.forEach((bug, index) => {
+                bug.update();
+                bug.draw();
+                if (bug.y > canvas.height) {
+                    bugs.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(animateGame);
+        }
+
+        animateGame();
+    </script>
+</body>
+</html>
